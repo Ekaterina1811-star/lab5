@@ -70,7 +70,7 @@ else:
 
         # Линии накопительного итога для заведенных и закрытых задач
         plt.plot(all_dates, cumulative_created_series, label='Накопленный итог заведенных задач', color='blue', linestyle='--')
-        plt.plot(all_dates, cumulative_closed_series, label='Накопленный итог закрытых задач', color='green', linestyle='-.')
+        plt.plot(all_dates, cumulative_closed_series, label='Накопленный итог закрытых задач', color='red', linestyle='-.')
 
         # Настройка осей и отображение легенды
         plt.xlabel('Дата')
@@ -82,7 +82,7 @@ else:
         plt.tight_layout()
         plt.show()
 
-        task3(issues)
+task3(issues)
 
 
 
