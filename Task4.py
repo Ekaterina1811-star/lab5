@@ -36,7 +36,7 @@ def task_4(issues):
 
 
 
-        plt.figure(figsize=(12, 8))
+        plt.figure(figsize=(15, 8))
         plt.barh(usernames, task_counts, color='skyblue')  # Горизонтальная гистограмма
         plt.xlabel('Количество задач')
         plt.ylabel('Пользователи')
