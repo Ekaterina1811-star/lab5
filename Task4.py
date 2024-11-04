@@ -34,7 +34,8 @@ def task_4(issues):
         usernames = [user[0] for user in top_users] # Извлекаем имена пользователей и количество задач
         task_counts = [user[1] for user in top_users]
 
-
+        # Установим шрифт, поддерживающий CJK
+        plt.rcParams['font.family'] = 'Arial Unicode MS'  # Замените на подходящий шрифт
 
         plt.figure(figsize=(15, 8))
         plt.barh(usernames, task_counts, color='skyblue')  # Горизонтальная гистограмма
