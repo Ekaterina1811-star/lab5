@@ -52,8 +52,8 @@ else:
             # как менялось количество созданных и закрытых задач по дням
 
             # Подсчет накопительного итога
-            cumulative_opened_total += created_task_counts.get(date, 0)
-            cumulative_closed_total += closed_task_counts.get(date, 0)
+            cumulative_opened_total += daily_created_counts[-1]
+            cumulative_closed_total += daily_closed_counts[-1]
 
             # Добавляем данные о накопительном итоге в соответствующие списки
             cumulative_created_series.append(cumulative_opened_total)
@@ -61,6 +61,8 @@ else:
 
             # Построение графика
         plt.figure(figsize=(12, 6))
+
+
 
         # Линии для ежедневного количества заведенных и закрытых задач
         plt.plot(all_dates, daily_created_counts, label = 'Ежедневное количество заведенных задач', color = 'blue')
