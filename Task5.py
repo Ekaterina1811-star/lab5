@@ -17,10 +17,13 @@ def task5(issues):
     for issue in issues:
         time_spent = issue['fields'].get('timespent')
         if time_spent is not None: # Проверка, если поле `timespent` не пустое
-            time_spent_hours = time_spent / 3600 * 60 # Переводим секунды в часы
+            time_spent_hours = time_spent / 3600 * 60 # Переводим секунды в минуты
             time_spent_counts[time_spent_hours] += 1
-        else:
-            print(f"Задача с ID {issue['id']} не имеет залогированного времени.")
+            print(f"ID задачи {issue['id']} ")
+            print("Затраченное время (timespent):", time_spent_hours)
+
+        # else:
+            # print(f"Задача с ID {issue['id']} не имеет залогированного времени.")
 
     # Построение гистограммы
     times = list(time_spent_counts.keys()) # возвращает все ключи из словаря (разные значения времени)
