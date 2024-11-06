@@ -13,17 +13,22 @@ else:
 def task5(issues):
     # Словарь для хранения количества задач по времени выполнения
     time_spent_counts = defaultdict(int)
+    time_spent_values = []
 
     for issue in issues:
         time_spent = issue['fields'].get('timespent')
         if time_spent is not None: # Проверка, если поле `timespent` не пустое
             time_spent_hours = time_spent / 3600  # Переводим секунды в часы
             time_spent_counts[time_spent_hours] += 1
+            time_spent_values.append(time_spent_hours)
             print(f"ID задачи {issue['id']} ")
             print("Затраченное время", time_spent_hours)
 
         # else:
             # print(f"Задача с ID {issue['id']} не имеет залогированного времени.")
+
+        # Выводим все значения времени для анализа
+    print(f"Все значения времени: {time_spent_values}")
 
     # Построение гистограммы
     times = list(time_spent_counts.keys()) # возвращает все ключи из словаря (разные значения времени)
@@ -31,7 +36,7 @@ def task5(issues):
 
     plt.figure(figsize=(10, 6))
     #plt.bar(times, counts, color='skyblue', edgecolor='blue')
-    counts, bins, patches = plt.hist(times, bins=25, color='skyblue', edgecolor='blue')
+    counts, bins, patches = plt.hist(time_spent_values, bins=10, color='skyblue', edgecolor='blue')
     plt.xlabel('Затраченное время (часы)')
     plt.ylabel('Количество задач')
     plt.title('Гистограмма затраченного времени на выполнение задач')
