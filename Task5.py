@@ -3,7 +3,7 @@ from collections import defaultdict
 from jira_api import analyse_time_spent
 
  # Запрос к JIRA для получения задач с полем timespent
-issues = analyse_time_spent("KAFKA")
+issues = analyse_time_spent("Hadoop HDFS")
     # Проверяем, что данные получены
 if not issues:
         print('Нет данных о закрытых задачах с затраченным временем')
@@ -16,9 +16,11 @@ def task5(issues):
 
     for issue in issues:
         time_spent = issue['fields'].get('timespent')
-        if time_spent: # Проверка, если поле `timespent` не пустое
+        if time_spent is not None: # Проверка, если поле `timespent` не пустое
             time_spent_hours = time_spent / 3600 # Переводим секунды в часы
             time_spent_counts[time_spent_hours] += 1
+        else:
+            print(f"Задача с ID {issue['id']} не имеет залогированного времени.")
 
     # Построение гистограммы
     times = list(time_spent_counts.keys()) # возвращает все ключи из словаря (разные значения времени)

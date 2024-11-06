@@ -50,7 +50,7 @@ def get_assignee_issues(project_key): # для 4 задачи
 def analyse_time_spent(project_key): # для 5 задачи
     url = "https://issues.apache.org/jira/rest/api/2/search"  # URL для JIRA API
     params = {
-        "jql": f"project={project_key} AND status=Closed",
+        "jql": f'project="{project_key}" AND status=Closed',
         # Строка запроса: задачи в проекте `project_key`, статус — `Closed`
         "fields": "timespent",
         # Поля, которые запрашиваем: дата создания и закрытия
@@ -72,7 +72,7 @@ def analyse_time_spent(project_key): # для 5 задачи
 
     return data.get("issues", [])
 
-analyse_time_spent('KAFKA')
+analyse_time_spent('Hadoop HDFS')
 
 
 
