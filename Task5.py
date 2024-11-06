@@ -36,7 +36,7 @@ def task5(issues):
     plt.ylabel('Количество задач')
     plt.title('Гистограмма затраченного времени на выполнение задач')
     plt.grid(axis='y')
-    plt.xticks(range(0, int(max(times))+1, 1)) # задает последовательность чисел от 0 до int(max(times)) + 1 с шагом 10
+    #plt.xticks(range(0, int(max(times))+1, 1)) # задает последовательность чисел от 0 до int(max(times)) + 1 с шагом 10
     plt.show()
 
 

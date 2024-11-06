@@ -64,9 +64,9 @@ def analyse_time_spent(project_key): # для 5 задачи
     data = response.json()  # Преобразуем ответ из JSON в словарь Python
 
     # Отображение значений `timespent` для отладки
-    for issue in data.get("issues", []):
-        print("ID задачи:", issue.get("id"))
-        print("Затраченное время (timespent):", issue['fields'].get('timespent'))
+    #for issue in data.get("issues", []):
+        #print("ID задачи:", issue.get("id"))
+        #print("Затраченное время (timespent):", issue['fields'].get('timespent'))
 
     return data.get("issues", [])
 
