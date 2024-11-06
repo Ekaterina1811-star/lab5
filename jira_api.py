@@ -58,10 +58,8 @@ def analyse_time_spent(project_key): # для 5 задачи
         "maxResults": 1000  # Максимальное количество задач, которые хотим получить
 
     }
-    headers = {
-        "Accept": "application/json"
-    }
-    response = requests.get(url, params=params, headers=headers)  # Выполняем GET-запрос к JIRA API с параметрами
+
+    response = requests.get(url, params=params)  # Выполняем GET-запрос к JIRA API с параметрами
     response.raise_for_status()  # Проверяем успешность запроса (вызывает ошибку при неудаче)
     data = response.json()  # Преобразуем ответ из JSON в словарь Python
 
@@ -72,7 +70,7 @@ def analyse_time_spent(project_key): # для 5 задачи
 
     return data.get("issues", [])
 
-analyse_time_spent('Hadoop HDFS')
+analyse_time_spent('ZOOKEEPER')
 
 
 
