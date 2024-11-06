@@ -30,8 +30,9 @@ def task5(issues):
     counts = list(time_spent_counts.values()) # возвращает все значения из time_spent_counts (количество задач для каждого значения времени)
 
     plt.figure(figsize=(10, 6))
-    plt.bar(times, counts, color='skyblue')
-    plt.xlabel('Затраченное время (минуты)')
+    #plt.bar(times, counts, color='skyblue', edgecolor='blue')
+    plt.hist(times, bins=20, color='skyblue', edgecolor='blue')
+    plt.xlabel('Затраченное время (часы)')
     plt.ylabel('Количество задач')
     plt.title('Гистограмма затраченного времени на выполнение задач')
     plt.grid(axis='y')
