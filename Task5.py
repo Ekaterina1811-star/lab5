@@ -31,12 +31,18 @@ def task5(issues):
 
     plt.figure(figsize=(10, 6))
     #plt.bar(times, counts, color='skyblue', edgecolor='blue')
-    plt.hist(times, bins=20, color='skyblue', edgecolor='blue')
+    counts, bins, patches = plt.hist(times, bins=25, color='skyblue', edgecolor='blue')
     plt.xlabel('Затраченное время (часы)')
     plt.ylabel('Количество задач')
     plt.title('Гистограмма затраченного времени на выполнение задач')
     plt.grid(axis='y')
     #plt.xticks(range(0, int(max(times))+1, 1)) # задает последовательность чисел от 0 до int(max(times)) + 1 с шагом 10
+
+    # Печатаем количество задач в каждой корзине
+    print("Количество задач в каждой корзине:")
+    for i in range(len(counts)):
+        print(f"Корзина {i + 1} (с интервалом от {bins[i]} до {bins[i + 1]}): {counts[i]} задач")
+
     plt.show()
 
 
