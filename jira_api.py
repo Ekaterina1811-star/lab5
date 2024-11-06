@@ -47,7 +47,7 @@ def get_assignee_issues(project_key): # для 4 задачи
     return data.get("issues", [])
 
 
-def analyse_time(project_key): # для 5 задачи
+def analyse_time_spent(project_key): # для 5 задачи
     url = "https://issues.apache.org/jira/rest/api/2/search"  # URL для JIRA API
     params = {
         "jql": f"project={project_key} AND status=Closed",
@@ -58,9 +58,21 @@ def analyse_time(project_key): # для 5 задачи
         "maxResults": 1000  # Максимальное количество задач, которые хотим получить
 
     }
-    response = requests.get(url, params=params)  # Выполняем GET-запрос к JIRA API с параметрами
+    headers = {
+        "Accept": "application/json"
+    }
+    response = requests.get(url, params=params, headers=headers)  # Выполняем GET-запрос к JIRA API с параметрами
     response.raise_for_status()  # Проверяем успешность запроса (вызывает ошибку при неудаче)
     data = response.json()  # Преобразуем ответ из JSON в словарь Python
+
+    # Отображение значений `timespent` для отладки
+    for issue in data.get("issues", []):
+        print("ID задачи:", issue.get("id"))
+        print("Затраченное время (timespent):", issue['fields'].get('timespent'))
+
     return data.get("issues", [])
+
+analyse_time_spent('KAFKA')
+
 
 

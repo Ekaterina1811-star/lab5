@@ -1,14 +1,16 @@
 import matplotlib.pyplot as plt
 from collections import defaultdict
-from jira_api import get_project_issues
+from jira_api import analyse_time_spent
 
-def analyse_time_spent(project_key): # Запрос к JIRA для получения задач с полем timespent
-    issues = get_project_issues(project_key, jql='status=Closed', fields='timespent')
+ # Запрос к JIRA для получения задач с полем timespent
+issues = analyse_time_spent("KAFKA")
     # Проверяем, что данные получены
-    if not issues:
+if not issues:
         print('Нет данных о закрытых задачах с затраченным временем')
-        return
+else:
+        print(f"Загружено {len(issues)} задач.")
 
+def task5(issues):
     # Словарь для хранения количества задач по времени выполнения
     time_spent_counts = defaultdict(int)
 
@@ -32,7 +34,7 @@ def analyse_time_spent(project_key): # Запрос к JIRA для получе�
     plt.show()
 
 
-analyse_time_spent("KAFKA")
+task5(issues)
 
 
 
